@@ -19,6 +19,7 @@ class App {
         }
         
         require_once "../app/controller/" . $this->controller . ".php";
+        $this->controller = new $this->controller;
         
         if ( isset($url[1]) ) {
             if ( method_exists($this->controller , $url[1]) ) {
@@ -26,10 +27,13 @@ class App {
                 unset($url[1]);
             }
         }
+
         
         if( !empty($url) ) {
-            $this->params = $url;
+            $this->params = array_values($url);
         }
+
+        call_user_func_array([$this->controller , $this->method] , $this->params);
     }
     
     public function parseURL()
