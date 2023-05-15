@@ -1,2 +1,1 @@
-<h1>Selamat Datang</h1>
-<p>Nama saya <?= $data['nama'] ?> dan umur saya <?= $data['umur'] ?></p>
+<h1>Selamat datang di Web MVC PHP saya</h1>
